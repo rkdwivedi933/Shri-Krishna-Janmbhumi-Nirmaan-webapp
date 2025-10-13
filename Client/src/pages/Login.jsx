@@ -12,24 +12,37 @@ export default function Login({ inline = true, onClose }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const res = await apiRequest("/login/insertLogin", "POST", form);
 
-    const res = await apiRequest("/login/insertLogin", "POST", form);
+      if (res.status === 1) {
+        // ✅ Save token
+        localStorage.setItem("token", res.token);
 
-    if (res.status === 1) {
-      // ✅ Save token & user info
-      localStorage.setItem("token", res.token);
-      localStorage.setItem("user", JSON.stringify(res.user));
-      if (onClose) onClose();
+        // ✅ Save user info
+        localStorage.setItem(
+          "user",
+          JSON.stringify({
+            fullName: res.user.name || res.user.fullName || "User",
+            email: res.user.email,
+          })
+        );
 
-      // ✅ Redirect user to home/dashboard after login
-      navigate("/");
-    } else {
-      setError(res.message || "Login failed");
+        if (onClose) onClose();
+
+        // ✅ Redirect to dashboard/profile
+        navigate("/userDashboard");
+      } else {
+        setError(res.message || "Login failed");
+      }
+    } catch (err) {
+      console.error(err);
+      setError("Login failed due to server error");
     }
   };
 
   return (
-    <div className="flex items-center justify-center">
+    <div className="">
       <form
         onSubmit={handleSubmit}
         className="bg-white shadow-lg rounded-2xl p-8 w-96"
@@ -41,7 +54,7 @@ export default function Login({ inline = true, onClose }) {
           type="email"
           name="email"
           placeholder="Email"
-          className="w-full p-2 mb-3 border rounded"
+          className="w-full p-3 mb-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
           onChange={handleChange}
           required
         />
@@ -49,19 +62,19 @@ export default function Login({ inline = true, onClose }) {
           type="password"
           name="password"
           placeholder="Password"
-          className="w-full p-2 mb-3 border rounded"
+          className="w-full p-3 mb-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
           onChange={handleChange}
           required
         />
 
         <button
           type="submit"
-          className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
+          className="w-full bg-blue-600 text-white py-3 rounded-md hover:bg-blue-700 transition-all"
         >
           Login
         </button>
 
-        <p className="text-center text-sm mt-3">
+        <p className="text-center text-sm mt-4 text-gray-700">
           Don’t have an account?{" "}
           <button
             type="button"

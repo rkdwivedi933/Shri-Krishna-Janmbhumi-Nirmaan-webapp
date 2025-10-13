@@ -1,50 +1,24 @@
+// src/admin/layouts/AdminLayout.jsx
+import React from "react";
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
-
-// import all pages
-import Dashboard from "../pages/Dashboard";
-import Users from "../pages/Users";
-import UserForm from "../pages/UserForm";
-import Settings from "../pages/Settings";
-import AboutForm from "../pages/AboutForm";
-
+import { Outlet } from "react-router-dom";
 
 const AdminLayout = () => {
   return (
-    <div className="flex">
+    <div className="flex h-screen bg-blue-900 text-white">
       {/* Sidebar */}
       <Sidebar />
 
-      {/* Main content */}
-      <div className="flex-1 flex flex-col">
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col bg-white">
+        {/* Navbar */}
         <Navbar />
-        <main className="p-6 bg-gray-100 min-h-screen space-y-10">
-          {/* Sab pages ek sath render kar rahe hai */}
-          <section>
-            <h2 className="text-2xl font-bold mb-4">Dashboard</h2>
-            <Dashboard />
-          </section>
 
-
-          <section>
-            <h2 className="text-2xl font-bold mb-4">Users</h2>
-            <Users />
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-bold mb-4">Add New User</h2>
-            <UserForm />
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-bold mb-4">Settings</h2>
-            <Settings />
-          </section>
-           <section>
-            <h2 className="text-2xl font-bold mb-4">About Form</h2>
-            <AboutForm />
-          </section>
-        </main>
+        {/* Page Content */}
+        <div className="flex-1 overflow-y-auto p-4 text-black">
+          <Outlet />
+        </div>
       </div>
     </div>
   );

@@ -5,4 +5,7 @@ const registerMiddleware = require("../../middleware/web/registerMiddleware");
 
 router.post("/insertRegister", registerMiddleware, registerController.insertRegister);
 
+
+router.get("/getAllRegisterUsers", registerController.getAllRegisterUsers);
+
 module.exports = router;
