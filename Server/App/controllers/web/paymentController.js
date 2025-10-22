@@ -38,3 +38,5 @@ exports.getAllPayments = async (req, res) => {
     res.status(500).json({ message: "Failed to fetch payments", error: error.message });
   }
 };
+
+

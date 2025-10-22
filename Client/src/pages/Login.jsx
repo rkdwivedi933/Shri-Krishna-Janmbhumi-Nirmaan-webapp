@@ -19,6 +19,9 @@ export default function Login({ inline = true, onClose }) {
         // ✅ Save token
         localStorage.setItem("token", res.token);
 
+        // ✅ Save userId for certificates
+        localStorage.setItem("userId", res.user._id);
+
         // ✅ Save user info
         localStorage.setItem(
           "user",

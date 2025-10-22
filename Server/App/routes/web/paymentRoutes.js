@@ -12,4 +12,7 @@ router.post("/insertPayment", paymentController.createPayment);
 // ✅ GET: get all payments
 router.get("/getAllPayments", paymentController.getAllPayments); // must exist in controller
 
+
+
+
 module.exports = router;

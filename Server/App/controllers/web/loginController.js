@@ -17,7 +17,7 @@ exports.loginUser = async (req, res) => {
     if (!match)
       return res.status(400).json({ status: 0, message: "Invalid password" });
 
-    // 🔹 3. Save login activity (optional but nice touch)
+    // 🔹 3. Save login activity (optional)
     await Login.create({
       email,
       password,
@@ -28,17 +28,17 @@ exports.loginUser = async (req, res) => {
     // 🔹 4. Generate JWT Token
     const token = jwt.sign(
       { id: user._id, email: user.email, role: user.role },
-      process.env.JWT_SECRET || "default_secret", // fallback for dev
+      process.env.JWT_SECRET || "default_secret",
       { expiresIn: "1h" }
     );
 
-    // 🔹 5. Response
+    // 🔹 5. Response (✅ _id fix)
     res.status(200).json({
       status: 1,
       message: "Login successful",
       token,
       user: {
-        id: user._id,
+        _id: user._id,       // ✅ must be _id
         name: user.name,
         email: user.email,
         role: user.role,
@@ -52,7 +52,7 @@ exports.loginUser = async (req, res) => {
 
 exports.getAllLoginUsers = async (req, res) => {
   try {
-    const users = await Login.find({}, "-password"); // password hide
+    const users = await Login.find({}, "-password");
     res.status(200).json({ status: 1, users });
   } catch (err) {
     console.error("Error fetching login users:", err);

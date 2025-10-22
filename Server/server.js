@@ -4,37 +4,34 @@ const cors = require("cors");
 const path = require("path");
 const connectDB = require("./App/config/database");
 
-// Client ka data admin pe jyega
+// Import routes
 const loginRoutes = require("./App/routes/web/loginRoutes");
 const registerRoutes = require("./App/routes/web/registerRoutes");
 const paymentRoutes = require("./App/routes/web/paymentRoutes");
 const userProfileRoutes = require("./App/routes/web/userProfileRoutes");
-
-// Admin ka data client me dikhega
+const certificateRoutes = require("./App/routes/web/certificateRoutes");
 const paymentInfoRoutes = require("./App/routes/admin/paymentInfoRoutes");
-
 
 dotenv.config();
 connectDB();
 
 const app = express();
 app.use(cors());
-
-app.use(express.json({ limit: "10mb" })); // default 100kb -> 10mb
+app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ limit: "10mb", extended: true }));
 
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+const uploadsPath = path.join(__dirname, "uploads");
+app.use("/uploads", express.static(uploadsPath));
+console.log("📂 Serving uploads from:", uploadsPath);
 
 
-// Client ka data admin pe jyega
+// ✅ Use routes
 app.use("/api/login", loginRoutes);
 app.use("/api/register", registerRoutes);
 app.use("/api/payment", paymentRoutes);
 app.use("/api/userprofile", userProfileRoutes);
-
-// Admin ka data client me dikhega
+app.use("/api/certificate", certificateRoutes);
 app.use("/api/paymentInfo", paymentInfoRoutes);
-
 
 app.get("/", (req, res) => res.send("🚀 API is running..."));
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Home, ShoppingCart, User, Settings, LogOut } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+
 
 export default function UserSidebar({ activePage, onMenuClick }) {
   const [userName, setUserName] = useState("");
@@ -15,14 +15,17 @@ export default function UserSidebar({ activePage, onMenuClick }) {
 
   
 
-  const menuItems = [
-    { name: "Update Profile", icon: <User size={20} />, link: "/UserProfile" },
-     { name: "Donate", icon: <User size={20} />, link: "/user/Payment"  },
-    { name: "Orders", icon: <ShoppingCart size={20} />, link: "/orders" },
-    { name: "Shop", icon: <Home size={20} />, link: "/shop" },
-    { name: "Settings", icon: <Settings size={20} />, link: "/settings" },
-    { name: "Sign Out", icon: <LogOut size={20} />, link: "/" },
-  ];
+ const menuItems = [
+  { name: "Update Profile", icon: <User size={20} />, link: "/userProfile" },
+  { name: "Donate", icon: <User size={20} />, link: "/userPayment" },
+  { name: "My Donate", icon: <User size={20} />, link: "/myDonate" },
+  { name: "My Certificate", icon: <User size={20} />, link: "/myCertificate" },
+  { name: "Orders", icon: <ShoppingCart size={20} />, link: "/orders" },
+  { name: "Shop", icon: <Home size={20} />, link: "/shop" },
+  { name: "Settings", icon: <Settings size={20} />, link: "/settings" },
+  { name: "Sign Out", icon: <LogOut size={20} />, link: "/" },
+];
+
 
   return (
     <aside className="mt-30 fixed left-0 top-0 h-screen w-64 bg-blue-900 text-white flex flex-col justify-between p-6 shadow-2xl z-50">

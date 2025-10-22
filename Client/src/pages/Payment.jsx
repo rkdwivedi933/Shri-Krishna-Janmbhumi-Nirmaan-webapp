@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "../components/Navbar";
+
 
 function Payment() {
   const [formData, setFormData] = useState({
-    fullName: "",
-    phone: "",
-    email: "",
-    date: "",
-    pincode: "",
-    amount: "",
-    coverFee: false,
-    receivePrasadam: false,
-    transactionId: "",
-  });
+  fullName: "",
+  phone: "",
+  email: "",
+  date: new Date().toISOString().split("T")[0], // ✅ auto today date
+  pincode: "",
+  amount: "",
+  coverFee: false,
+  receivePrasadam: false,
+  transactionId: "",
+});
+
 
   const [message, setMessage] = useState("");
   const [paymentInfo, setPaymentInfo] = useState([]);
@@ -76,7 +77,7 @@ function Payment() {
 
   return (
     <>
-      <Navbar />
+      
       <div className="min-h-screen bg-gradient-to-br from-indigo-100 to-indigo-300 flex items-center justify-center p-6">
         <div className="w-full max-w-5xl bg-white rounded-3xl shadow-2xl overflow-hidden">
           <form onSubmit={handleSubmit}>
