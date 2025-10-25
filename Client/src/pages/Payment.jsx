@@ -19,7 +19,7 @@ function Payment() {
   const [paymentInfo, setPaymentInfo] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5001/api/paymentInfo/getAll")
+    fetch("https://shri-krishna-janmbhumi-nirmaan-webapp-4.onrender.com/api/paymentInfo/getAll")
       .then((res) => res.json())
       .then((data) => setPaymentInfo(data))
       .catch((err) => console.error(err));
@@ -47,7 +47,7 @@ function Payment() {
     }
 
     try {
-      const res = await fetch("http://localhost:5001/api/payment/insertPayment", {
+      const res = await fetch("https://shri-krishna-janmbhumi-nirmaan-webapp-4.onrender.com/api/payment/insertPayment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
