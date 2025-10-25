@@ -27,7 +27,7 @@ export default function AdminPaymentInfo() {
         if (formData[key]) data.append(key, formData[key]);
       }
 
-      const res = await fetch("http://localhost:5001/api/paymentInfo/createOrUpdate", {
+      const res = await fetch("https://shri-krishna-janmbhumi-nirmaan-webapp-4.onrender.com/api/paymentInfo/createOrUpdate", {
         method: "POST",
         body: data,
       });
