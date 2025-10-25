@@ -39,7 +39,7 @@ export default function UserProfile() {
       setLoading(true);
       const encodedEmail = encodeURIComponent(email);
       const res = await axios.get(
-        `http://localhost:5001/api/userprofile/${encodedEmail}`
+        `https://shri-krishna-janmbhumi-nirmaan-webapp-4.onrender.com/api/userprofile/${encodedEmail}`
       );
 
       if (res.data.success) setUser(res.data.data);
@@ -75,7 +75,7 @@ export default function UserProfile() {
     try {
       setLoading(true);
       const res = await axios.post(
-        "http://localhost:5001/api/userprofile/save",
+        "https://shri-krishna-janmbhumi-nirmaan-webapp-4.onrender.com/api/userprofile/save",
         user
       );
       if (res.data.success) {
