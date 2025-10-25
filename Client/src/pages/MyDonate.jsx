@@ -15,7 +15,7 @@ function MyDonate() {
     if (!userEmail) return;
 
     axios
-      .get(`http://localhost:5001/api/payment/getAllPayments`)
+      .get(`https://shri-krishna-janmbhumi-nirmaan-webapp-4.onrender.com/api/payment/getAllPayments`)
       .then((res) => {
         // Filter donations by this user
         const filtered = res.data.filter((item) => item.email === userEmail);
