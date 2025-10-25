@@ -13,7 +13,7 @@ export default function AdminUserPayment() {
 
   const fetchPayments = async () => {
     try {
-      const res = await fetch("http://localhost:5001/api/payment/getAllPayments");
+      const res = await fetch("https://shri-krishna-janmbhumi-nirmaan-webapp-4.onrender.com/api/payment/getAllPayments");
       const data = await res.json();
       setPayments(data);
       setFilteredPayments(data);
