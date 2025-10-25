@@ -62,7 +62,7 @@ const UserCertificate = () => {
             <p className="text-sm text-gray-600 mb-2">{cert.phone}</p>
 
             <img
-              src={`http://localhost:5001${cert.imagePath}`}
+              src={`https://shri-krishna-janmbhumi-nirmaan-webapp-4.onrender.com/${cert.imagePath}`}
               alt={`Certificate - ${cert.type}`}
               className="w-full h-auto border mt-2"
             />
