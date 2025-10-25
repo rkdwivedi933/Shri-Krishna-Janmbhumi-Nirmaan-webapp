@@ -5,7 +5,7 @@ import Navbar from "./Navbar";
 import Opportunity from './Opportunity';
 import Privileges from './Privileges';
 import TempleCarousel from './TempleCarousel';
-import Testimonial from './testimonial';
+import Testimonial from './Testimonial';
 
 function Home() {
   return (
