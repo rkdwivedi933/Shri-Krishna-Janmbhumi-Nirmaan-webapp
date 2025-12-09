@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import UserNavbar from "../pages/UserNavbar";
-import UserSidebar from "../pages/UserSidebar";
+import UserNavbar from "./UserNavbar";
+import UserSidebar from "./UserSidebar";
 
 export default function UserDashboard() {
   const [active, setActive] = useState("Orders");

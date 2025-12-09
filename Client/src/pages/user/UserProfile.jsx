@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import UserNavbar from "./UserNavbar";
-import UserSidebar from "../pages/UserSidebar";
+import UserSidebar from "./UserSidebar";
 
 export default function UserProfile() {
   const [user, setUser] = useState({

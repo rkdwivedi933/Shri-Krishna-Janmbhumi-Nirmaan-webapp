@@ -1,6 +1,6 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
-import Payment from './Payment'
+import Navbar from '../../components/Navbar'
+import Payment from '../../pages/donate/Payment'
 
 function PublicPayment() {
   return (

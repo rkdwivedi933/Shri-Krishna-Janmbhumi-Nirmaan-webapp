@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import UserNavbar from "./UserNavbar";
-import UserSidebar from "./UserSidebar";
+import UserNavbar from "../user/UserNavbar";
+import UserSidebar from "../user/UserSidebar";
 import { Menu } from "lucide-react";
 
 function MyDonate() {

@@ -1,7 +1,7 @@
 import React from 'react';
 import UserNavbar from './UserNavbar';
 import UserSidebar from './UserSidebar';
-import Payment from './Payment';
+import Payment from '../donate/Payment';
 
 function UserPaymentpage() {
   return (

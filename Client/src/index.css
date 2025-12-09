@@ -1,8 +1,6 @@
 @import "tailwindcss";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
 
 /* Flowbite React plugin + source */
 @plugin "flowbite-react/plugin/tailwindcss";
